@@ -1,5 +1,7 @@
 '''Jogo da velha criado por Alberto, Clara e Filipe Fernandes'''
 
+'''Imports'''
+from termcolor import *
 '''Variaveis'''
 MatrizJogo = []
 Jogador_1  = ''
@@ -14,9 +16,9 @@ for i in range(3):
 
 '''Funcoes'''
 def printMatriz():
-    print('   [ 1 ] [ 2 ] [ 3 ]')
+    print(colored('   [ 1 ] [ 2 ] [ 3 ]', 'yellow'))
     for i in range(len(MatrizJogo)):
-        print('[%s]' % (letras[i]), end='')
+        print(colored('[%s]' % (letras[i]),'yellow'), end='')
         for j in range(len(MatrizJogo[i])):
             print(MatrizJogo[i][j], end= ' ')
         print('\n')
