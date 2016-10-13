@@ -15,6 +15,6 @@ def printMatriz():
 	for i in range(len(MatrizJogo)):
 		for j in range(len(MatrizJogo[i])):
 			print(MatrizJogo[i][j], end= ' ')
-	print('\n')
+		print('\n')
 
 printMatriz()
