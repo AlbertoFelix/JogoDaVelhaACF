@@ -2,7 +2,9 @@
 
 '''Variaveis'''
 MatrizJogo = []
-
+Jogador_1  = ''
+Jogador_2  = ''
+letras = ['A','B','C']
 '''Criacao da Matriz do jogo'''
 for i in range(3):
 	linha = []
@@ -12,10 +14,12 @@ for i in range(3):
 
 '''Funcoes'''
 def printMatriz():
-	for i in range(len(MatrizJogo)):
-		for j in range(len(MatrizJogo[i])):
-			print(MatrizJogo[i][j], end= ' ')
-		print('\n')
+    print('   [ 1 ] [ 2 ] [ 3 ]')
+    for i in range(len(MatrizJogo)):
+        print('[%s]' % (letras[i]), end='')
+        for j in range(len(MatrizJogo[i])):
+            print(MatrizJogo[i][j], end= ' ')
+        print('\n')
 
 '''Jogo'''
 while True:
@@ -26,3 +30,10 @@ while True:
         'C - Player vs Player Online\n')
     opcao = input('Qual a sua escolha? ')
     opcao = opcao.upper()
+    if opcao == 'A':
+        Jogador_1 = input('Qual o seu nome Jogador 1? ')
+        print('Muito bem ' + Jogador_1 + ' aguarde agora o Jogador 2.')
+        Jogador_2 = input('Qual o seu nome Jogador 2? ')
+        print('Muito bem ' + Jogador_1 + ' e ' + Jogador_2 + ', estamos prontos para começar!')
+        printMatriz()
+        break
