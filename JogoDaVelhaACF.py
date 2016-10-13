@@ -17,4 +17,12 @@ def printMatriz():
 			print(MatrizJogo[i][j], end= ' ')
 		print('\n')
 
-printMatriz()
+'''Jogo'''
+while True:
+    print('Seja bem vindo ao Jogo da Velha ACF!\n'
+        'Qual modalidade de jogo você deseja jogar?\n'
+        'A - Player vs Player\n'
+        'B - Player vs IA\n'
+        'C - Player vs Player Online\n')
+    opcao = input('Qual a sua escolha? ')
+    opcao = opcao.upper()
