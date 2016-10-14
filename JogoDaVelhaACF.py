@@ -152,7 +152,7 @@ while True:
                     vez = 'Acabou o Jogo.'
                     print('Deu Velha!')
                     break
-                opcao = input('Informe a posição em que você deseja colocar o X, ' + Jogador_1 + ': ')
+                opcao = input('Informe a posição em que você deseja colocar o X(EX: A2), ' + Jogador_1 + ': ')
                 opcao = opcao.upper()
                 if len(opcao) != 2:
                     print('Você deve ter digitado uma jogada incorreta. Tente Novamente.')
@@ -176,7 +176,7 @@ while True:
                     vez = 'Acabou o Jogo'
                     print('Deu Velha!')
                     break
-                opcao = input('Informe a posição em que você deseja colocar o O, ' + Jogador_2 + ': ')
+                opcao = input('Informe a posição em que você deseja colocar o O(EX: B1), ' + Jogador_2 + ': ')
                 opcao = opcao.upper()
                 if len(opcao) != 2:
                     print('Você deve ter digitado uma jogada incorreta. Tente Novamente.')
