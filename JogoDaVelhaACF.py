@@ -53,6 +53,12 @@ def jogar(vez, jogada, MatrizJogo):
             MatrizJogo[int(jogada[0])][int(jogada[1])] = '[ O ]'
     else:
         print('Você não pode jogar nesse local, pois já tem uma marcação ai!')
+
+def verifica_se_deu_velha(MatrizJogo):
+    for i in range(len(MatrizJogo)):
+        for j in range(len(MatrizJogo[i])):
+            if MatrizJogo[i][j] == '[   ]':
+                return False
 '''Jogo'''
 while True:
     print('Seja bem vindo ao Jogo da Velha ACF!\n'
@@ -71,12 +77,20 @@ while True:
         printMatriz()
         while True:
             while vez == 0:
+                if verifica_se_deu_velha(MatrizJogo) != False:
+                    vez = 'Acabou o Jogo'
+                    print('Deu Velha!')
+                    break
                 opcao = input('Informe a posição em que você deseja colocar o X, ' + Jogador_1 + ': ')
                 opcao = Decodificador(opcao)
                 jogar(vez,opcao,MatrizJogo)
                 vez = 1
                 printMatriz()
             while vez == 1:
+                if verifica_se_deu_velha(MatrizJogo) != False:
+                    vez = 'Acabou o Jogo'
+                    print('Deu Velha!')
+                    break
                 opcao = input('Informe a posição em que você deseja colocar o O, ' + Jogador_2 + ': ')
                 opcao = Decodificador(opcao)
                 jogar(vez,opcao,MatrizJogo)
