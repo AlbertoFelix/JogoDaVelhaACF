@@ -2,20 +2,21 @@
 
 '''Imports'''
 from termcolor import *
+
 '''Variaveis'''
-MatrizJogo = []
 Jogador_1  = ''
 Jogador_2  = ''
 letras = ['A','B','C']
-vez = 0
-'''Criacao da Matriz do jogo'''
-for i in range(3):
-	linha = []
-	for j in range(3):
-		linha.append('[   ]')
-	MatrizJogo.append(linha)
+numeros = ['1','2','3']
 
 '''Funcoes'''
+def criar_matriz_de_jogo(MatrizJogo):
+    for i in range(3):
+	    linha = []
+	    for j in range(3):
+		    linha.append('[   ]')
+	    MatrizJogo.append(linha)
+
 def printMatriz():
     print(colored('   [ 1 ] [ 2 ] [ 3 ]', 'yellow'))
     for i in range(len(MatrizJogo)):
@@ -122,8 +123,12 @@ def verifica_se_o_jogo_acabou(MatrizJogo):
         elif MatrizJogo[0][2] == '[ O ]':
             print('Parabéns ' + Jogador_2 + ' você venceu.')
             return True
+
 '''Jogo'''
 while True:
+    MatrizJogo = []
+    criar_matriz_de_jogo(MatrizJogo)
+    vez = 0
     print('Seja bem vindo ao Jogo da Velha ACF!\n'
         'Qual modalidade de jogo você deseja jogar?\n'
         'A - Player vs Player\n'
@@ -149,6 +154,15 @@ while True:
                     break
                 opcao = input('Informe a posição em que você deseja colocar o X, ' + Jogador_1 + ': ')
                 opcao = opcao.upper()
+                if len(opcao) != 2:
+                    print('Você deve ter digitado uma jogada incorreta. Tente Novamente.')
+                    break
+                if opcao[0] not in letras:
+                    print('Você deve colocar uma letra válida!')
+                    break
+                if opcao[1] not in numeros:
+                    print('O número fornecido está incorreto!')
+                    break
                 opcao = Decodificador(opcao)
                 if jogar(vez,opcao,MatrizJogo) == False:
                     break
@@ -164,8 +178,27 @@ while True:
                     break
                 opcao = input('Informe a posição em que você deseja colocar o O, ' + Jogador_2 + ': ')
                 opcao = opcao.upper()
+                if len(opcao) != 2:
+                    print('Você deve ter digitado uma jogada incorreta. Tente Novamente.')
+                    break
+                if opcao[0] not in letras:
+                    print('Você deve colocar uma letra válida!')
+                    break
+                if opcao[1] not in numeros:
+                    print('O número fornecido está incorreto!')
+                    break
                 opcao = Decodificador(opcao)
                 if jogar(vez,opcao,MatrizJogo) == False:
                     break
                 vez = 0
                 printMatriz()
+            if vez == 'Acabou o Jogo.':
+                jogar_novamente = input('Deseja jogar novamente(sim ou não)? ')
+                jogar_novamente = jogar_novamente.lower()
+                if jogar_novamente == 'sim':
+                    break
+                elif jogar_novamente == 'não':
+                    print('Volte sempre.')
+                    exit()
+                else:
+                    print('Você não digitou uma opção válida. Digite sim ou não.')
