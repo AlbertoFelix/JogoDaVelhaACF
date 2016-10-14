@@ -53,6 +53,7 @@ def jogar(vez, jogada, MatrizJogo):
             MatrizJogo[int(jogada[0])][int(jogada[1])] = '[ O ]'
     else:
         print('Você não pode jogar nesse local, pois já tem uma marcação ai!')
+        return False
 
 def verifica_se_deu_velha(MatrizJogo):
     for i in range(len(MatrizJogo)):
@@ -82,8 +83,10 @@ while True:
                     print('Deu Velha!')
                     break
                 opcao = input('Informe a posição em que você deseja colocar o X, ' + Jogador_1 + ': ')
+                opcao = opcao.upper()
                 opcao = Decodificador(opcao)
-                jogar(vez,opcao,MatrizJogo)
+                if jogar(vez,opcao,MatrizJogo) == False:
+                    break
                 vez = 1
                 printMatriz()
             while vez == 1:
@@ -92,7 +95,9 @@ while True:
                     print('Deu Velha!')
                     break
                 opcao = input('Informe a posição em que você deseja colocar o O, ' + Jogador_2 + ': ')
+                opcao = opcao.upper()
                 opcao = Decodificador(opcao)
-                jogar(vez,opcao,MatrizJogo)
+                if jogar(vez,opcao,MatrizJogo) == False:
+                    break
                 vez = 0
                 printMatriz()
