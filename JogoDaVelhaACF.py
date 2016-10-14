@@ -60,6 +60,68 @@ def verifica_se_deu_velha(MatrizJogo):
         for j in range(len(MatrizJogo[i])):
             if MatrizJogo[i][j] == '[   ]':
                 return False
+
+def verifica_se_o_jogo_acabou(MatrizJogo):
+    #Linhas
+    if MatrizJogo[0][0] == '[ X ]' and MatrizJogo[0][1] == '[ X ]' and MatrizJogo[0][2] == '[ X ]' or MatrizJogo[0][0] == '[ O ]' and MatrizJogo[0][1] == '[ O ]' and MatrizJogo[0][2] == '[ O ]':
+        if MatrizJogo[0][0] == '[ X ]':
+            print('Parabéns ' + Jogador_1 + ' você venceu.')
+            return True
+        elif MatrizJogo[0][0] == '[ O ]':
+            print('Parabéns ' + Jogador_2 + ' você venceu.')
+            return True
+    if MatrizJogo[1][0] == '[ X ]' and MatrizJogo[1][1] == '[ X ]' and MatrizJogo[1][2] == '[ X ]' or MatrizJogo[1][0] == '[ O ]' and MatrizJogo[1][1] == '[ O ]' and MatrizJogo[1][2] == '[ O ]':
+        if MatrizJogo[1][0] == '[ X ]':
+            print('Parabéns ' + Jogador_1 + ' você venceu.')
+            return True
+        elif MatrizJogo[1][0] == '[ O ]':
+            print('Parabéns ' + Jogador_2 + ' você venceu.')
+            return True
+    if MatrizJogo[2][0] == '[ X ]' and MatrizJogo[2][1] == '[ X ]' and MatrizJogo[2][2] == '[ X ]' or MatrizJogo[2][0] == '[ O ]' and MatrizJogo[2][1] == '[ O ]' and MatrizJogo[2][2] == '[ O ]':
+        if MatrizJogo[2][0] == '[ X ]':
+            print('Parabéns ' + Jogador_1 + ' você venceu.')
+            return True
+        elif MatrizJogo[2][0] == '[ O ]':
+            print('Parabéns ' + Jogador_2 + ' você venceu.')
+            return True
+    #Diagonal Primária
+    if MatrizJogo[0][0] == '[ X ]' and MatrizJogo[1][1] == '[ X ]' and MatrizJogo[2][2] == '[ X ]' or MatrizJogo[0][0] == '[ O ]' and MatrizJogo[1][1] == '[ O ]' and MatrizJogo[2][2] == '[ O ]':
+        if MatrizJogo[0][0] == '[ X ]':
+            print('Parabéns ' + Jogador_1 + ' você venceu.')
+            return True
+        elif MatrizJogo[0][0] == '[ O ]':
+            print('Parabéns ' + Jogador_2 + ' você venceu.')
+            return True
+    #Diagonal Segundária
+    if MatrizJogo[0][2] == '[ X ]' and MatrizJogo[1][1] == '[ X ]' and MatrizJogo[2][0] == '[ X ]' or MatrizJogo[0][2] == '[ O ]' and MatrizJogo[1][1] == '[ O ]' and MatrizJogo[2][0] == '[ O ]':
+        if MatrizJogo[0][2] == '[ X ]':
+            print('Parabéns ' + Jogador_1 + ' você venceu.')
+            return True
+        elif MatrizJogo[0][2] == '[ O ]':
+            print('Parabéns ' + Jogador_2 + ' você venceu.')
+            return True
+    #Colunas
+    if MatrizJogo[0][0] == '[ X ]' and MatrizJogo[1][0] == '[ X ]' and MatrizJogo[2][0] == '[ X ]' or MatrizJogo[0][0] == '[ O ]' and MatrizJogo[1][0] == '[ O ]' and MatrizJogo[2][0] == '[ O ]':
+        if MatrizJogo[0][0] == '[ X ]':
+            print('Parabéns ' + Jogador_1 + ' você venceu.')
+            return True
+        elif MatrizJogo[0][0] == '[ O ]':
+            print('Parabéns ' + Jogador_2 + ' você venceu.')
+            return True
+    if MatrizJogo[0][1] == '[ X ]' and MatrizJogo[1][1] == '[ X ]' and MatrizJogo[2][1] == '[ X ]' or MatrizJogo[0][1] == '[ O ]' and MatrizJogo[1][1] == '[ O ]' and MatrizJogo[2][1] == '[ O ]':
+        if MatrizJogo[0][1] == '[ X ]':
+            print('Parabéns ' + Jogador_1 + ' você venceu.')
+            return True
+        elif MatrizJogo[0][1] == '[ O ]':
+            print('Parabéns ' + Jogador_2 + ' você venceu.')
+            return True
+    if MatrizJogo[0][2] == '[ X ]' and MatrizJogo[1][2] == '[ X ]' and MatrizJogo[2][2] == '[ X ]' or MatrizJogo[0][2] == '[ O ]' and MatrizJogo[1][2] == '[ O ]' and MatrizJogo[2][2] == '[ O ]':
+        if MatrizJogo[0][2] == '[ X ]':
+            print('Parabéns ' + Jogador_1 + ' você venceu.')
+            return True
+        elif MatrizJogo[0][2] == '[ O ]':
+            print('Parabéns ' + Jogador_2 + ' você venceu.')
+            return True
 '''Jogo'''
 while True:
     print('Seja bem vindo ao Jogo da Velha ACF!\n'
@@ -78,8 +140,11 @@ while True:
         printMatriz()
         while True:
             while vez == 0:
+                if verifica_se_o_jogo_acabou(MatrizJogo) == True:
+                    vez = 'Acabou o Jogo.'
+                    break
                 if verifica_se_deu_velha(MatrizJogo) != False:
-                    vez = 'Acabou o Jogo'
+                    vez = 'Acabou o Jogo.'
                     print('Deu Velha!')
                     break
                 opcao = input('Informe a posição em que você deseja colocar o X, ' + Jogador_1 + ': ')
@@ -90,6 +155,9 @@ while True:
                 vez = 1
                 printMatriz()
             while vez == 1:
+                if verifica_se_o_jogo_acabou(MatrizJogo) == True:
+                    vez = 'Acabou o Jogo.'
+                    break
                 if verifica_se_deu_velha(MatrizJogo) != False:
                     vez = 'Acabou o Jogo'
                     print('Deu Velha!')
