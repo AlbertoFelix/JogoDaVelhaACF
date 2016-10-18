@@ -173,7 +173,7 @@ while True:
                     vez = 'Acabou o Jogo.'
                     break
                 if verifica_se_deu_velha(MatrizJogo) != False:
-                    vez = 'Acabou o Jogo'
+                    vez = 'Acabou o Jogo.'
                     print('Deu Velha!')
                     break
                 opcao = input('Informe a posição em que você deseja colocar o O(EX: B1), ' + Jogador_2 + ': ')
