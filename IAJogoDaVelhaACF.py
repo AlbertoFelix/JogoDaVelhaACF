@@ -2,6 +2,7 @@
 
 '''Imports'''
 from termcolor import *
+from copy import deepcopy
 
 '''Variaveis'''
 Jogador_1  = ''
@@ -93,7 +94,7 @@ def verifica_se_o_jogo_acabou(MatrizJogo):
         elif MatrizJogo[0][0] == '[ O ]':
             print('Parabéns ' + Jogador_2 + ' você venceu.')
             return True
-    #Diagonal Segundária
+    #Diagonal Secundária
     if MatrizJogo[0][2] == '[ X ]' and MatrizJogo[1][1] == '[ X ]' and MatrizJogo[2][0] == '[ X ]' or MatrizJogo[0][2] == '[ O ]' and MatrizJogo[1][1] == '[ O ]' and MatrizJogo[2][0] == '[ O ]':
         if MatrizJogo[0][2] == '[ X ]':
             print('Parabéns ' + Jogador_1 + ' você venceu.')
@@ -123,9 +124,10 @@ def verifica_se_o_jogo_acabou(MatrizJogo):
         elif MatrizJogo[0][2] == '[ O ]':
             print('Parabéns ' + Jogador_2 + ' você venceu.')
             return True
-     #Algoritmo MiniMax para jogada da IA!!!
+    ''' #Algoritmo MiniMax para jogada da IA!!!
 def jogada_IA(MatrizJogo):
-    
+    '''
+
 
 
 '''Jogo'''
@@ -177,7 +179,7 @@ while True:
                     vez = 'Acabou o Jogo.'
                     break
                 if verifica_se_deu_velha(MatrizJogo) != False:
-                    vez = 'Acabou o Jogo'
+                    vez = 'Acabou o Jogo.'
                     print('Deu Velha!')
                     break
                 opcao = input('Informe a posição em que você deseja colocar o O(EX: B1), ' + Jogador_2 + ': ')
@@ -208,11 +210,11 @@ while True:
                     print('Você não digitou uma opção válida. Digite sim ou não.')
 
     elif opcao == 'B':
-        jogador = input('Qual seu nome Jogador? ')
-        print('Muito bem ' + Jogador + ', você ficou com o X'
+        jogador_1 = input('Qual seu nome Jogador? ')
+        print('Muito bem ' + Jogador_1 + ', você ficou com o X'
         printMatriz()
         while True:
-            '''Vez Jogador'''
+            Vez Jogador
             while vez == 0:
                 if verifica_se_o_jogo_acabou(MatrizJogo) == True:
                     vez = 'Acabou o Jogo.'
@@ -221,7 +223,7 @@ while True:
                     vez = 'Acabou o Jogo.'
                     print('Deu Velha!')
                     break
-                opcao = input('Informe a posição em que você deseja colocar o X(EX: A2), ' + Jogador + ': ')
+                opcao = input('Informe a posição em que você deseja colocar o X(EX: A2), ' + Jogador_1 + ': ')
                 opcao = opcao.upper()
                 if len(opcao) != 2:
                     print('Você deve ter digitado uma jogada incorreta. Tente Novamente.')
@@ -237,8 +239,9 @@ while True:
                     break
                 vez = 1
                 printMatriz()
-            '''Vez IA'''
-            while vez == 1:
+            #Vez IA
+            '''while vez == 1:
+                jogador_2 = "Computer"
                 if verifica_se_o_jogo_acabou(MatrizJogo) == True:
                     vez = 'Acabou o Jogo.'
                     break
@@ -246,7 +249,7 @@ while True:
                     vez = 'Acabou o Jogo.'
                     print('Deu Velha!')
                     break
-                opcao = jogada_IA(MatrizJogo)
+                opcao = jogada_IA(MatrizJogo)'''
 
 
 
