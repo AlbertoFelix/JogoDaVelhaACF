@@ -2,7 +2,7 @@
 
 '''Imports'''
 from termcolor import *
-from copy import deepcopy
+
 
 '''Variaveis'''
 Jogador_1  = ''
