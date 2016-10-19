@@ -9,6 +9,7 @@ Jogador_1  = ''
 Jogador_2  = ''
 letras = ['A','B','C']
 numeros = ['1','2','3']
+numero_jogada_IA = 1
 
 '''Funcoes'''
 def criar_matriz_de_jogo(MatrizJogo):
@@ -139,7 +140,8 @@ def jogada_ACF_IA(MatrizJogo, num_jogada):
             return '20'
         else:
             return '02'
-    if num_jogada == 2:
+    elif num_jogada == 2:
+        #Primeira jogada de 'X' sendo A1
         if MatrizJogo[1][1] == '[ O ]' and MatrizJogo[0][0] == '[ X ]':
             if MatrizJogo[2][0] == '[ X ]' or MatrizJogo[2][2] == '[ X ]':
                 return '10'
@@ -149,7 +151,7 @@ def jogada_ACF_IA(MatrizJogo, num_jogada):
                 return '01'
             elif MatrizJogo[1][0] == '[ X ]' or MatrizJogo[2][1] == '[ X ]':
                 return '20'
-
+        # Primeira jogada de 'X' sendo A3
         elif MatrizJogo[1][1] == '[ O ]' and MatrizJogo[0][2] == '[ X ]':
             if MatrizJogo[2][0] == '[ X ]' or MatrizJogo[2][2] == '[ X ]':
                 return '12'
@@ -159,7 +161,7 @@ def jogada_ACF_IA(MatrizJogo, num_jogada):
                 return '01'
             elif MatrizJogo[1][2] == '[ X ]' or MatrizJogo[2][1] == '[ X ]':
                 return '22'
-
+        # Primeira jogada de 'X' sendo C3
         elif MatrizJogo[1][1] == '[ O ]' and MatrizJogo[2][2] == '[ X ]':
             if MatrizJogo[1][0] == '[ X ]' or MatrizJogo[2][1] == '[ X ]':
                 return '20'
@@ -171,7 +173,7 @@ def jogada_ACF_IA(MatrizJogo, num_jogada):
                 return '21'
             elif MatrizJogo[0][2] == '[ X ]':
                 return '12'
-
+        # Primeira jogada de 'X' sendo C1
         elif MatrizJogo[1][1] == '[ O ]' and MatrizJogo[2][0] == '[ X ]':
             if MatrizJogo[1][0] == '[ X ]' or MatrizJogo[0][1] == '[ X ]':
                 return '00'
@@ -183,6 +185,9 @@ def jogada_ACF_IA(MatrizJogo, num_jogada):
                 return '21'
             elif MatrizJogo[0][2] == '[ X ]':
                 return '12'
+
+    else:
+        return '00'
 
 
 
@@ -269,8 +274,8 @@ while True:
                     print('Você não digitou uma opção válida. Digite sim ou não.')
 
     elif opcao == 'B':
-        jogador_1 = input('Qual seu nome Jogador? ')
-        print('Muito bem ' + jogador_1 + ', você ficou com o X')
+        Jogador_1 = input('Qual seu nome Jogador? ')
+        print('Muito bem ' + Jogador_1 + ', você ficou com o X')
         printMatriz()
         while True:
             #Vez Jogador
@@ -299,9 +304,9 @@ while True:
                 vez = 1
                 printMatriz()
             #Vez IA
-            numero_jogada = 1
+
             while vez == 1:
-                jogador_2 = "Computer"
+                Jogador_2 = "Computer"
                 if verifica_se_o_jogo_acabou(MatrizJogo) == True:
                     vez = 'Acabou o Jogo.'
                     break
@@ -309,12 +314,23 @@ while True:
                     vez = 'Acabou o Jogo.'
                     print('Deu Velha!')
                     break
-                opcao = jogada_ACF_IA(MatrizJogo,numero_jogada)
+                opcao = jogada_ACF_IA(MatrizJogo,numero_jogada_IA)
                 if jogar(vez,opcao,MatrizJogo) == False:
                     break
                 vez = 0
-                numero_jogada +=1
+                numero_jogada_IA += 1
                 printMatriz()
+
+            if vez == 'Acabou o Jogo.':
+                jogar_novamente = input('Deseja jogar novamente(sim ou não)? ')
+                jogar_novamente = jogar_novamente.lower()
+                if jogar_novamente == 'sim':
+                    break
+                elif jogar_novamente == 'não':
+                    print('Volte sempre.')
+                    exit()
+                else:
+                    print('Você não digitou uma opção válida. Digite sim ou não.')
 
 
 
