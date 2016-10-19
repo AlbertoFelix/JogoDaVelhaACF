@@ -211,10 +211,10 @@ while True:
 
     elif opcao == 'B':
         jogador_1 = input('Qual seu nome Jogador? ')
-        print('Muito bem ' + Jogador_1 + ', você ficou com o X'
+        print('Muito bem ' + jogador_1 + ', você ficou com o X')
         printMatriz()
         while True:
-            Vez Jogador
+            #Vez Jogador
             while vez == 0:
                 if verifica_se_o_jogo_acabou(MatrizJogo) == True:
                     vez = 'Acabou o Jogo.'
