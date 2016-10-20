@@ -129,6 +129,7 @@ def verifica_se_o_jogo_acabou(MatrizJogo):
 
 '''Algoritmo #ACF para jogada da IA'''
 def jogada_ACF_IA(MatrizJogo, num_jogada):
+    # Primeira jogada da IA
     if num_jogada == 1:
         if MatrizJogo[0][0] == '[ X ]' or MatrizJogo[2][0] == '[ X ]' or MatrizJogo[0][2] == '[ X ]' or MatrizJogo[2][2] == '[ X ]':
             return '11'
@@ -140,8 +141,9 @@ def jogada_ACF_IA(MatrizJogo, num_jogada):
             return '20'
         else:
             return '02'
+    # Segunda jogada da IA
     elif num_jogada == 2:
-        #Primeira jogada de 'X' sendo A1
+        # Primeira jogada de 'X' sendo A1
         if MatrizJogo[1][1] == '[ O ]' and MatrizJogo[0][0] == '[ X ]':
             if MatrizJogo[2][0] == '[ X ]' or MatrizJogo[2][2] == '[ X ]':
                 return '10'
@@ -185,9 +187,49 @@ def jogada_ACF_IA(MatrizJogo, num_jogada):
                 return '21'
             elif MatrizJogo[0][2] == '[ X ]':
                 return '12'
+        # Primeira jogada de 'X' sendo A2
+        elif MatrizJogo[0][0] == '[ O ]' and MatrizJogo[0][1] == '[ X ]':
+            if MatrizJogo[0][2] == '[ X ]' or MatrizJogo[2][1] == '[ X ]':
+                return '20'
+            elif MatrizJogo[1][1] == '[ X ]' or MatrizJogo[2][2] == '[ X ]':
+                return '21'
+            elif MatrizJogo[1][0] == '[ X ]' or MatrizJogo[2][0] == '[ X ]' or MatrizJogo[2][1] == '[ X ]':
+                return '11'
+        # Primeira jogada de 'X' sendo B1
+        elif MatrizJogo[0][0] == '[ O ]' and MatrizJogo[1][0] == '[ X ]':
+            if MatrizJogo[1][1] == '[ X ]' or MatrizJogo[2][2] == '[ X ]':
+                return '12'
+            elif MatrizJogo[2][0] == '[ X ]' or MatrizJogo[2][1] == '[ X ]':
+                return '02'
+            elif MatrizJogo[0][1] == '[ X ]' or MatrizJogo[0][2] == '[ X ]' or MatrizJogo[1][2] == '[ X ]':
+                return '11'
+        # Primeira jogada de 'X' sendo B3
+        elif MatrizJogo[0][2] == '[ O ]' and MatrizJogo[1][2] == '[ X ]':
+            if MatrizJogo[2][1] == '[ X ]' or MatrizJogo[2][2] == '[ X ]':
+                return '00'
+            elif MatrizJogo[1][1] == '[ X ]' or MatrizJogo[2][0] == '[ X ]':
+                return '10'
+            elif MatrizJogo[0][0] == '[ X ]' or MatrizJogo[0][1] == '[ X ]' or MatrizJogo[1][0] == '[ X ]':
+                return '11'
+        # Primeira jogada de 'X' sendo C2
+        elif MatrizJogo[2][1] == '[ O ]' and MatrizJogo[2][0] == '[ X ]':
+            if MatrizJogo[0][2] == '[ X ]' or MatrizJogo[1][1] == '[ X ]':
+                return '01'
+            elif MatrizJogo[1][2] == '[ X ]' or MatrizJogo[2][2] == '[ X ]':
+                return '00'
+            elif MatrizJogo[0][0] == '[ X ]' or MatrizJogo[0][1] == '[ X ]' or MatrizJogo[1][0] == '[ X ]':
+                return '11'
+        else:
+            return '22'
+    # Terceira jogada da IA
+    #elif num_jogada == 3:
 
+    # Jogada na primeira posição vazia encontrada!
     else:
-        return '00'
+        for i in range(len(MatrizJogo)):
+            for j in range(len(MatrizJogo[i])):
+                if MatrizJogo[i][j] == '[   ]':
+                    return str(i) + str(j)
 
 
 
@@ -306,7 +348,7 @@ while True:
             #Vez IA
 
             while vez == 1:
-                Jogador_2 = "Computer"
+                Jogador_2 = "Inteligência Artificial"
                 if verifica_se_o_jogo_acabou(MatrizJogo) == True:
                     vez = 'Acabou o Jogo.'
                     break
@@ -314,6 +356,8 @@ while True:
                     vez = 'Acabou o Jogo.'
                     print('Deu Velha!')
                     break
+
+                print('Jogada da IA')
                 opcao = jogada_ACF_IA(MatrizJogo,numero_jogada_IA)
                 if jogar(vez,opcao,MatrizJogo) == False:
                     break
