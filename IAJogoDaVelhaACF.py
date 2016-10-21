@@ -138,8 +138,8 @@ def jogada_ACF_IA(MatrizJogo, num_jogada):
             return '02'
         elif MatrizJogo[2][1] == '[ X ]':
             return '20'
-        else:
-            return '02'
+        elif MatrizJogo[1][1] == '[ X ]':
+            return '00'
     # Segunda jogada da IA
     elif num_jogada == 2:
         # Primeira jogada de 'X' sendo A1
@@ -218,8 +218,22 @@ def jogada_ACF_IA(MatrizJogo, num_jogada):
                 return '00'
             elif MatrizJogo[0][0] == '[ X ]' or MatrizJogo[0][1] == '[ X ]' or MatrizJogo[1][0] == '[ X ]':
                 return '11'
-        else:
-            return '22'
+        # Primeira jogada de 'X' sendo B2
+        elif MatrizJogo[0][0] == '[ O ]' and MatrizJogo[1][1] == '[ X ]':
+            if MatrizJogo[2][2] == '[ X ]' or MatrizJogo[0][2] == '[ X ]':
+                return '20'
+            elif MatrizJogo[0][1] == '[ X ]':
+                return '21'
+            elif MatrizJogo[1][0] == '[ X ]':
+                return '12'
+            elif MatrizJogo[1][2] == '[ X ]':
+                return '10'
+            elif MatrizJogo[2][0] == '[ X ]':
+                return '02'
+            elif MatrizJogo[2][1] == '[ X ]':
+                return '01'
+
+
     # Terceira jogada da IA
 
     elif num_jogada == 3:
@@ -241,9 +255,14 @@ def jogada_ACF_IA(MatrizJogo, num_jogada):
                 return '12'
             else:
                 return '22'
+        else:
+            for i in range(len(MatrizJogo)):
+                for j in range(len(MatrizJogo[i])):
+                    if MatrizJogo[i][j] == '[   ]':
+                        return str(i) + str(j)
 
-    # Jogada na primeira posição vazia encontrada!
-    else:
+    # Quarta jogada da IA
+    elif num_jogada == 4:
         for i in range(len(MatrizJogo)):
             for j in range(len(MatrizJogo[i])):
                 if MatrizJogo[i][j] == '[   ]':
@@ -383,6 +402,7 @@ while True:
             if vez == 'Acabou o Jogo.':
                 jogar_novamente = input('Deseja jogar novamente(sim ou não)? ').lower()
                 if jogar_novamente == 'sim':
+                    numero_jogada_IA = 1
                     break
                 elif jogar_novamente == 'não':
                     print('Volte sempre.')
