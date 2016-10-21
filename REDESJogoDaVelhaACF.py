@@ -15,6 +15,7 @@ tcp.connect(dest)
 Jogador_1  = ''
 Jogador_2  = ''
 Jogador_Online = ''
+vez_online = 0
 letras = ['A','B','C']
 numeros = ['1','2','3']
 numero_jogada_IA = 1
@@ -217,7 +218,20 @@ while True:
 
     elif opcao == 'C':
         Jogador_Online = input('Digite seu nome: ')
-        print('Muito bem ' + Jogador_Online + ' agora aguarde o segundo Jogador.')
-
+        host = input('Informe seu IP: ')
+        vez_online = tcp.recv(1024)
+        vez_online = bytes(str(vez_online), 'utf-8')
+        tcp.send(vez_online)
+        while True:
+            if vez_online == 0:
+                print('Muito bem ' + Jogador_Online + ' agora aguarde o outro Jogador.')
+                Jogador_Online = bytes(Jogador_Online, 'utf-8')
+                tcp.send(Jogador_Online)
+                Jogador_1 = tcp.recv(1024)
+                Jogador_1 = str(Jogador_1, 'utf-8')
+            elif vez_online == 1:
+                Jogador_2 = tcp.recv(1024)
+                Jogador_2 = str(Jogador_2, 'utf-8')
+                print(Jogador_1,Jogador_2)
 
 
