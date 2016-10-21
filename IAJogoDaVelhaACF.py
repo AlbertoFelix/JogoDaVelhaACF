@@ -125,7 +125,6 @@ def verifica_se_o_jogo_acabou(MatrizJogo):
         elif MatrizJogo[0][2] == '[ O ]':
             print('Parabéns ' + Jogador_2 + ' você venceu.')
             return True
-     #Algoritmo #ACF para jogada da IA!!!
 
 '''Algoritmo #ACF para jogada da IA'''
 def jogada_ACF_IA(MatrizJogo, num_jogada):
@@ -265,11 +264,11 @@ while True:
         'A - Player vs Player\n'
         'B - Player vs IA\n'
         'C - Player vs Player Online\n')
-    opcao = input('Qual a sua escolha? ')
-    opcao = opcao.upper()
+    opcao = input('Qual a sua escolha? ').upper()
+
     if opcao == 'A':
         Jogador_1 = input('Qual o seu nome Jogador 1? ')
-        print('Muito bem ' + Jogador_1 + ', você ficou com o X, agora aguarde o Jogador 2.')
+        print('Muito bem ' + Jogador_1 + ', você ficou com o X, agora aguarde o próximo jogador.')
         Jogador_2 = input('Qual o seu nome Jogador 2? ')
         print('Muito bem ' + Jogador_2 + ', você ficou com o O.\n')
         print('Muito bem ' + Jogador_1 + ' e ' + Jogador_2 + ', estamos prontos para começar!\n')
@@ -283,13 +282,13 @@ while True:
                     vez = 'Acabou o Jogo.'
                     print('Deu Velha!')
                     break
-                opcao = input('Informe a posição em que você deseja colocar o X(EX: A2), ' + Jogador_1 + ': ')
-                opcao = opcao.upper()
+                opcao = input('Informe a posição em que você deseja colocar o X(EX: A2), ' + Jogador_1 + ': ').upper()
+
                 if len(opcao) != 2:
-                    print('Você deve ter digitado uma jogada incorreta. Tente Novamente.')
+                    print('Você fez uma jogada incorreta. Tente novamente.')
                     break
                 if opcao[0] not in letras:
-                    print('Você deve colocar uma letra válida!')
+                    print('Por favor, insira uma letra válida.')
                     break
                 if opcao[1] not in numeros:
                     print('O número fornecido está incorreto!')
@@ -307,13 +306,12 @@ while True:
                     vez = 'Acabou o Jogo.'
                     print('Deu Velha!')
                     break
-                opcao = input('Informe a posição em que você deseja colocar o O(EX: B1), ' + Jogador_2 + ': ')
-                opcao = opcao.upper()
+                opcao = input('Informe a posição em que você deseja colocar o O(EX: B1), ' + Jogador_2 + ': ').upper()
                 if len(opcao) != 2:
-                    print('Você deve ter digitado uma jogada incorreta. Tente Novamente.')
+                    print('Você fez uma jogada incorreta. Tente novamente.')
                     break
                 if opcao[0] not in letras:
-                    print('Você deve colocar uma letra válida!')
+                    print('Por favor, insira uma letra válida.')
                     break
                 if opcao[1] not in numeros:
                     print('O número fornecido está incorreto!')
@@ -324,8 +322,7 @@ while True:
                 vez = 0
                 printMatriz()
             if vez == 'Acabou o Jogo.':
-                jogar_novamente = input('Deseja jogar novamente(sim ou não)? ')
-                jogar_novamente = jogar_novamente.lower()
+                jogar_novamente = input('Deseja jogar novamente(sim ou não)? ').lower()
                 if jogar_novamente == 'sim':
                     break
                 elif jogar_novamente == 'não':
@@ -348,13 +345,12 @@ while True:
                     vez = 'Acabou o Jogo.'
                     print('Deu Velha!')
                     break
-                opcao = input('Informe a posição em que você deseja colocar o X(EX: A2), ' + Jogador_1 + ': ')
-                opcao = opcao.upper()
+                opcao = input('Informe a posição em que você deseja colocar o X(EX: A2), ' + Jogador_1 + ': ').upper()
                 if len(opcao) != 2:
-                    print('Você deve ter digitado uma jogada incorreta. Tente Novamente.')
+                    print('Você fez uma jogada incorreta. Tente novamente.')
                     break
                 if opcao[0] not in letras:
-                    print('Você deve colocar uma letra válida!')
+                    print('Por favor, insira uma letra válida.')
                     break
                 if opcao[1] not in numeros:
                     print('O número fornecido está incorreto!')
@@ -385,8 +381,7 @@ while True:
                 printMatriz()
 
             if vez == 'Acabou o Jogo.':
-                jogar_novamente = input('Deseja jogar novamente(sim ou não)? ')
-                jogar_novamente = jogar_novamente.lower()
+                jogar_novamente = input('Deseja jogar novamente(sim ou não)? ').lower()
                 if jogar_novamente == 'sim':
                     break
                 elif jogar_novamente == 'não':
