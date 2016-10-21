@@ -222,7 +222,26 @@ def jogada_ACF_IA(MatrizJogo, num_jogada):
         else:
             return '22'
     # Terceira jogada da IA
-    #elif num_jogada == 3:
+
+    elif num_jogada == 3:
+        if MatrizJogo[0][0] == '[ X ]' and MatrizJogo[0][1] == '[ X ]' and MatrizJogo[0][2] == '[ O ]' and \
+                        MatrizJogo[1][1] == '[ O ]':
+            if MatrizJogo[2][0] == '[ X ]':
+                return '12'
+            else:
+                return '20'
+        elif MatrizJogo[0][0] == '[ X ]' and MatrizJogo[0][2] == '[ X ]' and MatrizJogo[0][1] == '[ O ]' and \
+                        MatrizJogo[1][1] == '[ O ]':
+            if MatrizJogo[2][1] == '[ X ]':
+                return '22'
+            else:
+                return '21'
+        elif MatrizJogo[0][1] == '[ X ]' and MatrizJogo[0][2] == '[ X ]' and MatrizJogo[0][0] == '[ O ]' and \
+                        MatrizJogo[1][1] == '[ O ]':
+            if MatrizJogo[2][2] == '[ X ]':
+                return '12'
+            else:
+                return '22'
 
     # Jogada na primeira posição vazia encontrada!
     else:
