@@ -217,5 +217,7 @@ while True:
 
     elif opcao == 'C':
         Jogador_Online = input('Digite seu nome: ')
+        print('Muito bem ' + Jogador_Online + ' agora aguarde o segundo Jogador.')
+
 
 
