@@ -42,6 +42,7 @@ while True:
     conexao, cliente = tcp.accept()
     while True:
         vez_online = bytes(str(vez_online), 'utf-8')
+        print(vez_online)
         conexao.send(vez_online)
         transformar = conexao.recv(1024)
         print(transformar[2])

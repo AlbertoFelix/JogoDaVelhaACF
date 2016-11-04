@@ -220,7 +220,7 @@ while True:
         Jogador_Online = input('Digite seu nome: ')
         host = input('Informe seu IP: ')
         vez_online = tcp.recv(1024)
-        vez_online = bytes(str(vez_online), 'utf-8')
+        vez_online = vez_online.decode('utf-8')
         tcp.send(vez_online)
         while True:
             if vez_online == 0:
